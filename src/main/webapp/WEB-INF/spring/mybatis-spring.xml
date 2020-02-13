@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1. DataSource 생성 -->
+	<bean id="datasource" 
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@70.12.60.110:1521:XE"/>
+		<property name="username" value="hwan"/>
+		<property name="password" value="1234"/>
+	</bean>
+	
+	<!-- 2. 매퍼, mybatis 설정 파일 정보 알려주자 -->
+	<bean id="sqlSessionfacotry" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+		<property name="configLocation" value="classpath:/multi/semi/main/mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:/multi/semi/main/multistar-mapping.xml"/>
+	</bean>
+ 	<bean id="sqlSessionfacotry2" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+		<property name="configLocation" value="classpath:/multi/semi/board/mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:/multi/semi/board/board-mapping.xml"/>
+	</bean>
+	<bean id="sqlSessionfacotry3" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/>
+		<property name="configLocation" value="classpath:/multi/semi/login/mybatis-config.xml"/>
+		<property name="mapperLocations" value="classpath:/multi/semi/login/login-mapping.xml"/>
+	</bean>
+	
+	<!-- 3. SqlSessionTemplate (spring api) 생성 
+	SqlSessionTemplate sqlSession = new SqlSessionTemplate(SqlSessionFactoryBean 타입객체)-->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionfacotry"></constructor-arg>
+	</bean>
+	<bean id="sqlSession2" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionfacotry2"></constructor-arg>
+	</bean>
+	<bean id="sqlSession3" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionfacotry3"></constructor-arg>
+	</bean>
+</beans>
