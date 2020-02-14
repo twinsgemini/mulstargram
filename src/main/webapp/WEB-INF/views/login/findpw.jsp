@@ -5,8 +5,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find ID | Test</title>
-    <link rel="stylesheet" type="text/css" href="../../../resources/login/styles.css" />
+    <title>Find PW | Test</title>
+    <link rel="stylesheet" type="text/css" href="/multistargram/resources/login/styles.css" />
   </head>
   <body>
     <div>
@@ -26,7 +26,7 @@
       <!-- //header -->
       <!-- container -->
       <div id="container">
-        <form id="content" action="ID 찾기 요청URL" method="POST">
+        <form id="content" action="/multistargram/findUserPwresult" method="POST">
           <fieldset class="find_form login_form">
             <legend class="blind">등록한 아이디</legend>
             <div class="id_area">
@@ -76,11 +76,11 @@
             <!-- 구현 여부 상의해야함 -->
             <div class="check_area"></div>
             <div class="find_info">
-                <a target="_blank" id="signin" href="signin.html">회원가입</a>
+                <a target="_blank" id="signin" href="/multistargram/memberinsert">회원가입</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="id_inquiry" href="findid.html">아이디 찾기</a>
+                <a target="_blank" id="id_inquiry" href="/multistargram/findUserId">아이디 찾기</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="login" href="login.html">로그인</a>
+                <a target="_blank" id="login" href="/multistargram">로그인</a>
             </div>
           </fieldset>
         </form>
@@ -92,6 +92,6 @@
     </div>
     <!-- javascript -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="../../../resources/login/styles.js"></script>
+    <script type="text/javascript" src="/multistargram/resources/login/styles.js"></script>
   </body>
 </html>

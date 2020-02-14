@@ -2,15 +2,14 @@ package multi.semi.login;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -34,11 +33,15 @@ public class LoginController {
 		LoginVO vo = dao.selectMember(user_id, user_pw);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", vo);
-		try {
-			return "redirect:/index";
-		} catch (Exception e) {
+		
+		try{if(vo.getUser_id().equals(user_id)&&vo.getUser_pw().equals(user_pw)) {
+			return "home";
+		}else {
 			return "login/login";
-		}
+		}}catch (Exception e) {
+			return "login/login";
+		}	
+		
 	}
 //회원가입
 	@RequestMapping(value = "/memberinsert", method = RequestMethod.GET)
@@ -51,6 +54,16 @@ public class LoginController {
 		dao.insertMember(vo);			
 		return "login/login";
 	}
+//회원가입; id 중복 검사
+	@RequestMapping(value = "member/idcheck", method= RequestMethod.POST)
+	public int idCheck(String user_id) {
+		return 0;
+	}
+//회원가입; email 중복 검사
+	@RequestMapping(value = "member/emailcheck", method= RequestMethod.POST)
+	public int emailCheck(String user_email) {
+		return 0;
+	}
 //아이디 찾기폼
 	@RequestMapping("/findUserId")
 	public String findUserIdform() {
@@ -58,10 +71,33 @@ public class LoginController {
 		}
 //아이디 찾기폼결과
 	@RequestMapping("/findUserIdresult")
-	public String findUserIdresult(HttpServletRequest request, String user_email, String user_name) {
+	public ModelAndView findUserIdresult(HttpServletRequest request, String user_name, String user_email) {
 		LoginVO vo = dao.findUserId(user_name, user_email);		
-		HttpSession session = request.getSession();
-		session.setAttribute("member", vo);
-		return "login/findsuccess";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("id", vo);
+		mv.setViewName("login/findidsuccess");
+		
+		return mv;
 		}
+//pw 찾기폼
+	@RequestMapping("/findUserPw")
+	public String findUserPwform() {
+		return "login/findpw";
+		}
+//pw 찾기폼결과
+	@RequestMapping("/findUserPwresult")
+	public ModelAndView findUserPwresult(HttpServletRequest request, String user_id, String user_birth) {
+		LoginVO vo = dao.findUserPw(user_id, user_birth);		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("pw", vo);
+		mv.setViewName("login/findpwsuccess");
+			
+		return mv;
+		}
+//로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+
+		return "login/logout";
+	}
 }
