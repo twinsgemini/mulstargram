@@ -9,7 +9,7 @@
 	<insert id="insertarticle" parameterType="article">
 		INSERT into article (article_id, user_id, article_time, article_like, article_content, article_img) 
 		values 
-		((SELECT MAX(article_id)+1 from article), #{user_id}, sysdate, 0, #{article_content}, '허')
+		((SELECT MAX(article_id)+1 from article), #{user_id}, sysdate, 0, #{article_content}, #{article_img})
 	</insert>
 	
 	
