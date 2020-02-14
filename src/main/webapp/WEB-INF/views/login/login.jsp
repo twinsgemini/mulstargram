@@ -76,7 +76,7 @@
                 <div class="find_info">
                   <a target="_blank" id="id_inquiry" href="/multistargram/findUserId">아이디 찾기</a>
                   <span class="bar" aria-hidden="true">|</span>
-                  <a target="_blank" id="pw_inquiry" href="#">비밀번호 찾기</a>
+                  <a target="_blank" id="pw_inquiry" href="/multistargram/findUserPw">비밀번호 찾기</a>
                   <span class="bar" aria-hidden="true">|</span>
                   <a target="_blank" id="signin" href="/multistargram/memberinsert">회원가입</a>
                 </div>
