@@ -7,7 +7,7 @@
 		</div>
 
 		<div id="nav-in-con-so">
-			<a href="#"><img alt="logout" src="/multistargram/resources/logout.png" style="box-sizing: border-box; margin-top: 20px;"></a>
+			<a href="/multistargram/logout"><img alt="logout" src="/multistargram/resources/logout.png" style="box-sizing: border-box; margin-top: 40px;"></a>
 		</div>
 	</div>
 </div>

@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<h1> ${member.userid } 회원님 로그아웃되셨습니다.</h1>
+<h1> ${member.user_id } 회원님 로그아웃되셨습니다.</h1>
 <% session.removeAttribute("member"); %>
 </body>
 </html>

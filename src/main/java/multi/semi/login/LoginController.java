@@ -35,7 +35,7 @@ public class LoginController {
 		session.setAttribute("member", vo);
 		
 		try{if(vo.getUser_id().equals(user_id)&&vo.getUser_pw().equals(user_pw)) {
-			return "home";
+			return "redirect:/index";
 		}else {
 			return "login/login";
 		}}catch (Exception e) {
@@ -98,6 +98,6 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 
-		return "login/logout";
+		return "redirect:/";
 	}
 }
