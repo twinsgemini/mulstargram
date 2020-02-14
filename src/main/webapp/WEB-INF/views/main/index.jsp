@@ -28,7 +28,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
 	<div id="container">
 		<div id="container-left">
 			<c:forEach var="article" items="${articles }">
-				<div class="article">
+				<div class="article" style="margin-bottom: 40px">
 					<div class="article-header"><h4 id="user_id">${article.user_id }</h4></div>
 					<div class="article-img"><img class ="art-image" alt="이미지" src="/multistargram/resources/cat.jpg"></div>
 					<div class="article-footer">

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 public class LoginDAO {
 	
 	@Autowired
-	@Qualifier("sqlSession3")
 	SqlSession session;
 	
 	public LoginVO selectMember(String user_id, String user_pw) {
