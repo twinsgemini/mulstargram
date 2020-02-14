@@ -92,6 +92,6 @@
     </div>
     <!-- javascript -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="/multistargram/resources//login/styles.js"></script>
+    <script type="text/javascript" src="/multistargram/resources/login/styles.js"></script>
   </body>
 </html>
