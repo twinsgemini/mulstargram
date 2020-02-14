@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +27,14 @@
       <div id="container">
           <div id="content">
               <h3><span id="your_inquiry">회원님의 ID는</span></h3>
-              <h1><span> <%= request.getParameter("id") %> | ${param.id }| ${login.id }</span><h1>
+              <h1><span> ${id.user_id }</span><h1>
               <h3><span>입니다. 나가세요.</span></h3>
               <div class="find_info">
-                <a target="_blank" id="id_inquiry" href="findid.html">아이디 찾기</a>
+                <a target="_blank" id="id_inquiry" href="/multistargram/findUserId">아이디 찾기</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="pw_inquiry" href="findpw.html">비밀번호 찾기</a>
+                <a target="_blank" id="pw_inquiry" href="/multistargram/findUserPw">비밀번호 찾기</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="signin" href="signin.html">회원가입</a>
+                <a target="_blank" id="signin" href="/multistargram">로그인</a>
               </div>
           </div>
       </div>
