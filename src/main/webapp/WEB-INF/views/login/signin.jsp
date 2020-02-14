@@ -61,7 +61,7 @@
                     <div class="signin_birth signin_row">
                         <h3><label for=birth_date>생년월일</label></h3>
                                 <span class="ps_box">
-                                    <input type="text" name="user_birth" id="yymmdd" placeholder="20191225" aria-label="생년월일" maxlength="8" class="int">
+                                    <input type="text" name="user_birth" id="user_birth" placeholder="20191225" aria-label="생년월일" maxlength="8" class="int">
                                 </span>
                                 <span>
                                     <span class="error_box" id="nameMsg" aria-live="assertive" style="display: hidden;"></span>
@@ -767,6 +767,6 @@
          </div>
          <!-- javascript -->
          <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/multistargram/resources/login/styles.js"></script>
+        <script type="text/javascript" src="/multistargram/resources/login/signin.js"></script>
     </body>
     </html>

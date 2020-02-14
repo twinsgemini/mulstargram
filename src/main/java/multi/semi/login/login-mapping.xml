@@ -7,6 +7,14 @@
 		parameterType="member">
 		select * from member where user_id=#{user_id} and user_pw= #{user_pw}
 	</select>
+	
+	<select id="id_check" resultType="int" parameterType="member">
+	select user_id from member where user_name ={user_name}
+	</select>
+	
+	<select id ="email_check" resultType="int" parameterType="member">
+	select user_id from member where user_email ={user_email}
+	</select>
 
 	<select id="find_id" resultType="member" parameterType="member">
 		select user_id from member where user_name = #{user_name} and user_email=#{user_email}
