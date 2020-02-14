@@ -54,6 +54,16 @@ public class LoginController {
 		dao.insertMember(vo);			
 		return "login/login";
 	}
+//회원가입; id 중복 검사
+	@RequestMapping(value = "member/idcheck", method= RequestMethod.POST)
+	public int idCheck(String user_id) {
+		return 0;
+	}
+//회원가입; email 중복 검사
+	@RequestMapping(value = "member/emailcheck", method= RequestMethod.POST)
+	public int emailCheck(String user_email) {
+		return 0;
+	}
 //아이디 찾기폼
 	@RequestMapping("/findUserId")
 	public String findUserIdform() {

@@ -334,9 +334,9 @@ $(document) .ready(function() {
 // // mvc를 이용한 id,email 중복처리
 $("#id").keyup(function () {
     $.ajax({
-        url: "요청URL",
+        url: "'${pageContext.request.contextPath}/member/idcheck", 
         type: "POST",
-        data: { id: $("#id").val() },
+        data: { "id": $("#id").val() },
         success: function (result) {
             if (result == 1) {
                 $("#idMsg").html("중복된 아이디가 있습니다.");
@@ -351,9 +351,9 @@ $("#id").keyup(function () {
 
 $("#email").keyup(function () {
     $.ajax({
-        url: "요청URL",
+        url: "'${pageContext.request.contextPath}member/emailcheck",
         type: "POST",
-        data: { email: $("#email").val() },
+        data: { "email": $("#email").val() },
         success: function (result) {
             if (result == 1) {
                 $("#emailMsg").html("중복된 이메일이 있습니다.");
