@@ -12,12 +12,11 @@ import org.springframework.stereotype.Repository;
 public class BoardDAO {
 	
 	@Autowired
-	@Qualifier("sqlSession2")
 	SqlSession sqlsession;
 	
 	// board
 	public List<BoardVO> boardList(PagingVO paging){
-		return sqlsession.selectList("allboardlist", paging);
+		return sqlsession.selectList("boardlist", paging);
 	}
 	
 	// count list
@@ -35,7 +34,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.update("plusCnt", board);
 		if(i > 0) {
-			System.out.println("Á¶È¸¼ö Áõ°¡ +"+i);
+			System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ +"+i);
 		}
 	}
 	
@@ -44,7 +43,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.insert("insertContent", board);
 		if(i > 0) {
-			System.out.println("Insert ¼º°ø, i : "+i);
+			System.out.println("Insert ï¿½ï¿½ï¿½ï¿½, i : "+i);
 		}
 	}
 	
@@ -53,7 +52,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.update("boardupdate", board);
 		if(i > 0) {
-			System.out.println("Update ¼º°ø, i="+i);
+			System.out.println("Update ï¿½ï¿½ï¿½ï¿½, i="+i);
 		}
 	}
 	
@@ -62,7 +61,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.delete("boarddelete", board_num);
 		if(i > 0) {
-			System.out.println("Delete ¼º°ø, i="+i);
+			System.out.println("Delete ï¿½ï¿½ï¿½ï¿½, i="+i);
 		}
 		
 	}

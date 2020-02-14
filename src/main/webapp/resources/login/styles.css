@@ -29,6 +29,7 @@ body {
 #header {
   width: 768px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 #content {
   width: 460px;
@@ -41,11 +42,13 @@ body {
 }
 
 #header .title_logo {
-  background-image: url("/multistargram/resources/log.png");
+	
+  background-image: url("/multistargram/resources/home.png");
+  background-repeat: no-repeat;
   display: block;
   overflow: hidden;
-  width: 360px;
-  height: 28px;
+  width: 468px;
+  height: 115px;
   margin: 0 auto;
   font-size: 15px;
   color: transparent;

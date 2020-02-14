@@ -76,11 +76,11 @@
             <!-- 구현 여부 상의해야함 -->
             <div class="check_area"></div>
             <div class="find_info">
-                <a target="_blank" id="signin" href="signin.html">회원가입</a>
+                <a target="_blank" id="signin" href="/multistargram/memberinsert">회원가입</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="pw_inquiry" href="findpw.html">비밀번호 찾기</a>
+                <a target="_blank" id="pw_inquiry" href="/multistargram/findUserPw">비밀번호 찾기</a>
                 <span class="bar" aria-hidden="true">|</span>
-                <a target="_blank" id="login" href="login.html">로그인</a>
+                <a target="_blank" id="login" href="/multistargram">로그인</a>
             </div>
           </fieldset>
         </form>
@@ -92,6 +92,6 @@
     </div>
     <!-- javascript -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="/multistargram/resources//login/styles.js"></script>
+    <script type="text/javascript" src="/multistargram/resources/login/styles.js"></script>
   </body>
 </html>

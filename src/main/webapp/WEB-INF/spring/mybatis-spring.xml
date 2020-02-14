@@ -16,28 +16,12 @@
 	<bean id="sqlSessionfacotry" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"/>
 		<property name="configLocation" value="classpath:/multi/semi/main/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:/multi/semi/main/multistar-mapping.xml"/>
-	</bean>
- 	<bean id="sqlSessionfacotry2" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="datasource"/>
-		<property name="configLocation" value="classpath:/multi/semi/board/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:/multi/semi/board/board-mapping.xml"/>
-	</bean>
-	<bean id="sqlSessionfacotry3" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="datasource"/>
-		<property name="configLocation" value="classpath:/multi/semi/login/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:/multi/semi/login/login-mapping.xml"/>
+		<property name="mapperLocations" value="classpath:/multi/semi/**/*-mapping.xml"/>
 	</bean>
 	
 	<!-- 3. SqlSessionTemplate (spring api) 생성 
 	SqlSessionTemplate sqlSession = new SqlSessionTemplate(SqlSessionFactoryBean 타입객체)-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionfacotry"></constructor-arg>
-	</bean>
-	<bean id="sqlSession2" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionfacotry2"></constructor-arg>
-	</bean>
-	<bean id="sqlSession3" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionfacotry3"></constructor-arg>
 	</bean>
 </beans>
