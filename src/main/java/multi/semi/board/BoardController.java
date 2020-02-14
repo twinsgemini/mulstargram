@@ -3,6 +3,7 @@ package multi.semi.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import multi.semi.login.LoginVO;
 
 
 @Controller
@@ -36,15 +39,20 @@ public class BoardController {
 	
 	// write
 	@RequestMapping("/boardwrite")
-	public String boardWrite() {
+	public String boardWrite(HttpSession httpsession) {
+		LoginVO user = (LoginVO) httpsession.getAttribute("member");
+		System.out.println(user);
+		
+		if(user == null) {
+			return "redirect:/";
+		}
+		
 		return "board/boardwrite";
 	}
 	
 	// insert content
 	@RequestMapping(value="/boardinsert", method=RequestMethod.POST)
 	public String boardInsert(HttpSession httpsession, BoardVO board) {
-		//String user_id = (String)httpsession.getAttribute("user_id");
-		board.setUser_id("");
 		board.setBoard_content(board.getBoard_content().replace("\r\n", "<br>"));
 		
 		System.out.println("[ boardinsert ]"+board);
@@ -58,25 +66,23 @@ public class BoardController {
 	public ModelAndView boardDetail(BoardVO board){
 		ModelAndView mv = new ModelAndView();
 		
+		board = dao.selectOne(board.getBoard_num());
 		// board_cnt +1
 		dao.plusCnt(board);
+		board = dao.selectOne(board.getBoard_num());
 		
-		BoardVO vo = dao.selectOne(board.getBoard_num());
-		mv.addObject("board", vo);
-		
-		boolean iswriter = true;
-		mv.addObject("iswriter",iswriter);
+		mv.addObject("board", board);
 		
 		mv.setViewName("board/boarddetail");
 		return mv;
 	}
 	
 	// modify
-	@RequestMapping("/boardmodify")
-	public ModelAndView boardModify(int board_num) {
+	@RequestMapping(value="/boardmodify", method= RequestMethod.GET)
+	public ModelAndView boardModify(BoardVO board) {
 		ModelAndView mv = new ModelAndView();
-		
-		BoardVO board = dao.selectOne(board_num);
+		System.out.println("[ modify GET Method ]"+board);
+		System.out.println("board_content : "+board.getBoard_content());
 		board.setBoard_content(board.getBoard_content().replace("<br>", "\r\n"));
 		mv.addObject("board", board);
 		
@@ -87,10 +93,14 @@ public class BoardController {
 	// update
 	@RequestMapping(value="/boardmodify", method = RequestMethod.POST)
 	public String boardUpdate(BoardVO board) {
-		board.setBoard_content(board.getBoard_content().replace("\r\n", "<br>"));
-		dao.boardUpdate(board);
+		System.out.println("[ modify POST Method ]"+board);
+		BoardVO db_board = dao.selectOne(board.getBoard_num());
+		db_board.setBoard_title(board.getBoard_title());
+		db_board.setBoard_content(board.getBoard_content().replace("\r\n", "<br>"));
+		db_board.setBoard_cnt(db_board.getBoard_cnt()-1);
+		dao.boardUpdate(db_board);
 		
-		return "redirect:/boarddetail?board_num="+board.getBoard_num();
+		return "redirect:/boarddetail?board_num="+db_board.getBoard_num();
 	}
 	
 	// delete

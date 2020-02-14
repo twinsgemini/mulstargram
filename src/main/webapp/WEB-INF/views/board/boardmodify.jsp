@@ -19,7 +19,7 @@
 		<div class="inner">
 			<h2>게시글 수정</h2>
 			<form id="boardForm" name="boardForm" action="http://localhost:8080/multistargram/boardmodify" method="post">
-			<table width="100%" class="table02">
+			<table width="100%" class="table01">
 				<colegroup>
 					<col width="20%">
 					<col width="*">'
@@ -27,7 +27,7 @@
 				<tbody id="tbody">
 				<tr>
 					<th>제목<span class="t_red">*</span></th>
-					<td><input id="board_title" name="board_title" value="${board.board_title}" class="tbox01" /></td>
+					<td><input id=board_title" name="board_title" value="${board.board_title}" class="tbox01"/></td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -35,11 +35,11 @@
 				</tr>
 				<tr>
 					<th>내용<span class="t_red">*</span></th>
-					<td colspan="3" height="400"><textarea style="resize: none; id="board_content" name="board_content" cols="50" rows="5" class="textarea01" >${board.board_content}</textarea></td>			
+					<td colspan="3" height="400"><textarea id="board_content" name="board_content" cols="50" rows="5" class="textarea01">${board.board_content}</textarea></td>			
 				</tbody>
 		</table>					
 		<input type="hidden" id="board_num" name="board_num" value="${board.board_num }"/>	 					
-		<input type="hidden" id="" name="" value=""/>
+		<input type="hidden" id="board_cnt" name="board_cnt" value="${board.board_cnt }"/>
 	</form>
 	<div class="btn_right mt15">
 		<button type="button" class="btn black mr5" onclick="document.getElementById('boardForm').submit();">수정하기</button>

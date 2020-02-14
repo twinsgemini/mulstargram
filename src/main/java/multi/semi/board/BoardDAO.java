@@ -17,7 +17,7 @@ public class BoardDAO {
 	
 	// board
 	public List<BoardVO> boardList(PagingVO paging){
-		return sqlsession.selectList("allboardlist", paging);
+		return sqlsession.selectList("boardlist", paging);
 	}
 	
 	// count list
