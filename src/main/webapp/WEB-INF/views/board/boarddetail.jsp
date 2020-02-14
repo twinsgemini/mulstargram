@@ -15,11 +15,11 @@
 	<div id="container">
 		<div class="inner">
 			<h2>게시글 상세</h2>
-			<form id="boardForm" name="boardForm">
+			<form id="boardForm" name="boardForm" action="http://localhost:8080/multistargram/boardmodify" method="get">
 			<table width="100%" class="table01">
 				<colegroup>
 					<col width="15%">
-					<col width="50%">
+					<col width="35%">
 					<col width="15%">
 					<col width="*">'
 				</colegroup>
@@ -34,23 +34,29 @@
 				<tr>
 				<th>작성자</th>
 				<td>${board.user_id }</td>
-				<th>작성시간</th>
+				<th>작성일시</th>
 				<td>${board.board_date }</td>
 				</tr>
 				<tr>
 				<th>내용</th>
 				<td colspan="3" height="400"><div style="text-align:left">${board.board_content}</td></div>
 				</tr>
-				</tbody>	
+				</tbody>
+				<input type="hidden" name="board_num" value="${board.board_num }">
+				<input type="hidden" name="board_title" value="${board.board_title }">
+				<input type="hidden" name="user_id" value="${board.user_id }">
+				<input type="hidden" name="board_content" value="${board.board_content }">
+				<input type="hidden" name="board_cnt" value="${board.board_cnt }">
 		</table>					
 		 					
 	</form>
 	<div class="btn_right mt15">
 		<button type="button" class="btn black mr5" onclick="location.href='http://localhost:8080/multistargram/board'">목록으로</button>
-		<c:if test="${iswriter}">
-		<button type="button" class="btn black mr5" onclick="location.href='http://localhost:8080/multistargram/boardmodify?board_num=${board.board_num}'" formmethod="post">수정하기</button>
+		<c:if test="${board.user_id==member.user_id}">
+		<button type="button" class="btn black mr5" onclick="document.getElementById('boardForm').submit()">수정하기</button>
 		<button type="button" class="btn black" onclick="location.href='http://localhost:8080/multistargram/boarddelete?board_num=${board.board_num}'">삭제하기</button>
 		</c:if>
+		
 		
 	
 	

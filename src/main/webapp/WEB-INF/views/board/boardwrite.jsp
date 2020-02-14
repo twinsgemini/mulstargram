@@ -9,7 +9,20 @@
 <script src="<c:url value="/resources/jquery.form.js" />"></script>
 </head>
 
-
+<script type="text/javascript">
+	function checkTitle(){
+		var s = document.getElementById('board_title').value.trim();
+		var b = true;
+		if(s == ''){
+			b = false; 
+			alert("제목은 필수 항목입니다.");
+		} 
+		if(b){
+			document.getElementById('board_title').value = s;
+			document.getElementById('boardForm').submit();
+		}
+	}
+</script>
 
 
 
@@ -32,19 +45,21 @@
 				</tr>	
 				<tr>
 					<th>작성자</th>
-					<td>${user_id }</td>
+					<td>${member.user_id }</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td><textarea id="board_content" name="board_content" cols="10" rows="5" class="textarea01" placeholder="내용을 입력하세요"></textarea></td>
 				</tr>
 				</tbody>
-		</table>					
+		</table>
+		
+		<input type="hidden" name="user_id" value="${member.user_id }">
 		
 	</form>
 	<div class="btn_right mt15">
 		<button type="button" class="btn black mr5" onclick="location.href='http://localhost:8080/multistargram/board'">목록으로</button>
-		<button type="button" class="btn black" onclick="document.getElementById('boardForm').submit();">등록하기</button>
+		<button type="button" class="btn black" onclick="checkTitle();">등록하기</button>
 	
 	</div>			
 	</div>

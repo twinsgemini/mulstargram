@@ -23,9 +23,9 @@
 <table width="100%" class="table01">
 <colgroup>
 <col width="10%"/>
-<col width="25%"/>
+<col width="*"/>
 <col width="15%"/>
-<col width="25%"/>
+<col width="20%"/>
 <col width="10%"/>
 </colgroup>
 <thead>
@@ -44,7 +44,7 @@
 <c:forEach items="${list }" var="vo">
 <tr>
 <td>${vo.board_num }</td>
-<td><a href="http://localhost:8080/multistargram/boarddetail?board_num=${vo.board_num}&board_cnt=${vo.board_cnt+1}">${vo.board_title}</a></td>
+<td style="text-align:left;"><a href="http://localhost:8080/multistargram/boarddetail?board_num=${vo.board_num}">${vo.board_title}</a></td>
 <td>${vo.user_id}</td>
 <td>${vo.board_date }</td>
 <td>${vo.board_cnt }</td>
@@ -59,8 +59,12 @@
    	<a href="http://localhost:8080/multistargram/board?page=${paging.startpage-1 }">이전</a>
 </c:if> 
 <c:forEach begin="${paging.startpage}" end="${paging.endpage}" var="page">
+	<c:if test="${paging.page == page }">
+   <a style="background-color: black; color: white" href="http://localhost:8080/multistargram/board?page=${page }">${page}</a>
+	</c:if>
+	<c:if test="${paging.page != page }">
     <a href="http://localhost:8080/multistargram/board?page=${page }">${page}</a>
-    <a></a>
+	</c:if>
 </c:forEach>
 <c:if test="${paging.next}">
    	<a href="http://localhost:8080/multistargram/board?page=${paging.endpage+1 }">다음</a>
