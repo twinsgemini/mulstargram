@@ -15,7 +15,7 @@ body {
   background: #f5f6f7;
 }
 #header {
-  background-color: rgb(255, 215, 162);
+  background-color: #FFF;
   position: relative;
   box-sizing: border-box;
   height: 128px;
@@ -29,6 +29,7 @@ body {
 #header {
   width: 768px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 #content {
   width: 460px;
@@ -41,11 +42,13 @@ body {
 }
 
 #header .title_logo {
-  background-image: url(https://www.multicampus.com/img/saas/main/logo/CUS0001/pc_main.png);
+	
+  background-image: url("/multistargram/resources/home.png");
+  background-repeat: no-repeat;
   display: block;
   overflow: hidden;
-  width: 185px;
-  height: 36px;
+  width: 468px;
+  height: 115px;
   margin: 0 auto;
   font-size: 15px;
   color: transparent;
