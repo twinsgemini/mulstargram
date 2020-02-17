@@ -13,7 +13,7 @@
           <!-- header -->
           <div id="header">
             <h1>
-              <a href="logo.logo" class="title_logo" id="logo"></a>
+              <a href="#" class="title_logo" id="logo"></a>
               <span class="blind">로고 여기</span>
             </h1>
             <div class="lang">
