@@ -3,6 +3,7 @@ package multi.semi.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,6 +39,10 @@ public class MainController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("articles", dao.getAllArticle());
+		
+		
+		List<multi.semi.board.BoardVO> list = dao.getBoardList();
+		mv.addObject("list", list);
 		mv.setViewName("main/index");
 		return mv;
 	}
@@ -43,6 +50,17 @@ public class MainController {
 	@RequestMapping("/artinsert")
 	public String insertArtForm() {
 		return "main/art_insert";
+	}
+	
+	@RequestMapping("/ajaxinsert")
+	@ResponseBody
+	public List<ArticleVO> moreArticle(@RequestParam("numberOfRequests") int numberOfRequests) {
+		int cntPerPage = 3;
+		int start = (numberOfRequests-1) * cntPerPage + 1;
+		int end = numberOfRequests * cntPerPage;
+		int param [] = {start,end};
+		List<ArticleVO> list = dao.getMoreArticle(param);
+		return list;
 	}
 
 	@RequestMapping(value = "/artinsert", method = RequestMethod.POST)

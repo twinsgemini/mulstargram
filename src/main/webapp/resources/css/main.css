@@ -34,10 +34,12 @@ body {
 
 #container {
 	width: 80%;
-	height: 100%;
 	margin: auto;
 	padding-top: 40px;
 }
+/* #container::-webkit-scrollbar{
+	display: none;
+} */
 
 #container-left {
 	width: 60%;
@@ -46,7 +48,7 @@ body {
 }
 
 #container-right {
-	width: 35%;
+	width: 37%;
 	height: 100%;
 	float: right;
 }
