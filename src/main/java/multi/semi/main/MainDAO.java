@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 
@@ -22,6 +21,11 @@ public class MainDAO {
 	public int insertArticle(ArticleVO vo) {
 		int i = session.insert("insertarticle", vo);
 		return i;
+	}
+	
+	public List<ArticleVO> getMoreArticle(int[] param) {
+		List<ArticleVO> list = session.selectList("morearticle", param);
+		return list;
 	}
 	
 }

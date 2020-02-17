@@ -3,7 +3,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="article">
 	<select id="allarticle" resultType="article">
-		select * from article order by article_time desc
+		select article_id, user_id, to_char(article_time, 'yy" 년"mm" 월"dd" 일"') article_time, article_like, article_content, article_img 
+		from(select rownum r, article_id, user_id, article_time, article_like,article_content, article_img
+		from (select * from article order by article_time desc)
+		)
+		where r between 1 and 3
 	</select>
 	
 	<insert id="insertarticle" parameterType="article">
@@ -12,5 +16,11 @@
 		((SELECT MAX(article_id)+1 from article), #{user_id}, sysdate, 0, #{article_content}, #{article_img})
 	</insert>
 	
-	
+	<select id="morearticle" resultType="java.util.HashMap" parameterType="int[]">
+		select article_id, user_id, to_char(article_time, 'yy" 년"mm" 월"dd" 일"') article_time, article_like, article_content, article_img 
+		from(select rownum r, article_id, user_id, article_time, article_like,article_content, article_img
+		from (select * from article order by article_time desc)
+		)
+		where r between #{array[0]} and #{array[1]}
+	</select>
 </mapper>
