@@ -23,4 +23,13 @@
 		)
 		where r between #{array[0]} and #{array[1]}
 	</select>
+	<select id="getboardlist" resultType="board">
+	<![CDATA[
+		select board_num, board_title
+		from (select rownum r, board_num, board_title
+		from (select * from board order by board_num desc))
+		where r < 11
+		]]>
+	</select>
+	
 </mapper>

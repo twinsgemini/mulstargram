@@ -2,6 +2,7 @@ package multi.semi.board;
 
 import java.util.List;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,14 +15,14 @@ public class BoardDAO {
 	@Autowired
 	SqlSession sqlsession;
 	
-	// board
+	// board list
 	public List<BoardVO> boardList(PagingVO paging){
 		return sqlsession.selectList("boardlist", paging);
 	}
 	
 	// count list
-	public int cntList(){
-		return sqlsession.selectOne("cntlist");
+	public int cntList(SearchVO paging){
+		return sqlsession.selectOne("cntlist", paging);
 	}
 	
 	// select one
@@ -34,7 +35,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.update("plusCnt", board);
 		if(i > 0) {
-			System.out.println("ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ +"+i);
+			System.out.println("Á¶È¸¼ö Áõ°¡ +"+i);
 		}
 	}
 	
@@ -43,7 +44,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.insert("insertContent", board);
 		if(i > 0) {
-			System.out.println("Insert ï¿½ï¿½ï¿½ï¿½, i : "+i);
+			System.out.println("Insert ¼º°ø, i : "+i);
 		}
 	}
 	
@@ -52,7 +53,7 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.update("boardupdate", board);
 		if(i > 0) {
-			System.out.println("Update ï¿½ï¿½ï¿½ï¿½, i="+i);
+			System.out.println("Update ¼º°ø, i="+i);
 		}
 	}
 	
@@ -61,8 +62,9 @@ public class BoardDAO {
 		int i = 0;
 		i = sqlsession.delete("boarddelete", board_num);
 		if(i > 0) {
-			System.out.println("Delete ï¿½ï¿½ï¿½ï¿½, i="+i);
+			System.out.println("Delete ¼º°ø, i="+i);
 		}
-		
 	}
+	
+	
 }

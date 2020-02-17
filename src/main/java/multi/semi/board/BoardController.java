@@ -3,7 +3,7 @@ package multi.semi.board;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +21,17 @@ public class BoardController {
 	@Autowired
 	BoardDAO dao;
 	
-	
+	// board list
 	@RequestMapping(value="/board", method=RequestMethod.GET)
-	public ModelAndView boardList(PagingVO paging){
+	public ModelAndView boardList(SearchVO paging){
 		ModelAndView mv = new ModelAndView();
+		
+		System.out.println(paging.getType()+" - "+paging.getWord());
 		
 		List<BoardVO> list = dao.boardList(paging);
 		mv.addObject("list", list);
 		
-		int cntlist = dao.cntList();
+		int cntlist = dao.cntList(paging);
 		paging.settingPage(cntlist);
 		mv.addObject("paging", paging);
 		

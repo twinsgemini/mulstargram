@@ -3,7 +3,6 @@ package multi.semi.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,6 +35,10 @@ public class MainController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("articles", dao.getAllArticle());
+		
+		
+		List<multi.semi.board.BoardVO> list = dao.getBoardList();
+		mv.addObject("list", list);
 		mv.setViewName("main/index");
 		return mv;
 	}

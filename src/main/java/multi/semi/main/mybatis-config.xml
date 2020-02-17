@@ -8,7 +8,7 @@
 <typeAliases>
 		<typeAlias type="multi.semi.main.ArticleVO" alias="article" />
 		<typeAlias type="multi.semi.board.BoardVO" alias="board" />
-		<typeAlias type="multi.semi.board.PagingVO" alias="paging" />
+		<typeAlias type="multi.semi.board.SearchVO" alias="paging" />
 		<typeAlias type="multi.semi.login.LoginVO" alias="member" />
 	</typeAliases>
 </configuration>

@@ -27,5 +27,8 @@ public class MainDAO {
 		List<ArticleVO> list = session.selectList("morearticle", param);
 		return list;
 	}
+	public List<multi.semi.board.BoardVO> getBoardList(){
+		return session.selectList("getboardlist");
+	}
 	
 }
