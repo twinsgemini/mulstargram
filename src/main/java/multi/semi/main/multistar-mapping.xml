@@ -12,5 +12,13 @@
 		((SELECT MAX(article_id)+1 from article), #{user_id}, sysdate, 0, #{article_content}, #{article_img})
 	</insert>
 	
+	<select id="getboardlist" resultType="board">
+	<![CDATA[
+		select board_num, board_title
+		from (select rownum r, board_num, board_title
+		from (select * from board order by board_num desc))
+		where r < 11
+		]]>
+	</select>
 	
 </mapper>
