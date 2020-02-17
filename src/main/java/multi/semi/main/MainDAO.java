@@ -24,4 +24,8 @@ public class MainDAO {
 		return i;
 	}
 	
+	public List<multi.semi.board.BoardVO> getBoardList(){
+		return session.selectList("getboardlist");
+	}
+	
 }

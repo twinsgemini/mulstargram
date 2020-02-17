@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 페이지</title>
 
-
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/board.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/jquery-3.2.1.min.js" />"></script>
 <script src="<c:url value="/resources/jquery.form.js" />"></script>
@@ -22,6 +22,11 @@ function search(){
 
 </head>
 <body>
+
+<div id="nav">
+		<%@ include file = "../include/header.jsp" %>
+	</div>
+
 <div id="wrap">
 <div id="container">
 <div class="inner">

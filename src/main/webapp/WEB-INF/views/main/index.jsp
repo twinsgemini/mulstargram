@@ -12,12 +12,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
 <title>Multistagram</title>
 </head>
 <body>
+
 	<script src="/multistargram/resources/jquery-3.2.1.min.js"></script>
+	<script src="<c:url value="/resources/jquery.form.js" />"></script>
 	<div id="nav">
 		<%@ include file = "../include/header.jsp" %>
 	</div>
 	<div id="container">
-		<div id="container-left">
+		<div id="container-left" >
 			<c:forEach var="article" items="${articles }">
 				<div class="article" style="margin-bottom: 40px">
 					<div class="article-header"><h4 id="user_id" style="margin-left: 4px">${article.user_id }</h4></div>
@@ -33,12 +35,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
 			</c:forEach>
 		</div>
 		<div id="container-right">
-		<form action="/multistargram/artinsert">
-			<input type="submit" value="사진올리기">
-		</form>
-		<form action="/multistargram/board">
-			<input type="submit" value="게시판 가기">
-		</form>
+		<div>
+			<form>
+			<%@ include file = "../board/boardindex.jsp" %>
+			</form>
+		</div>
 		</div>
 	</div>
 	
