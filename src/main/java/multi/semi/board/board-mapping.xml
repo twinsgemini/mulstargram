@@ -2,17 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="board">
-
+<!-- 
 <select id="boardlist" resultType="board" parameterType="paging">
 	select board_num, board_title, board_date, board_cnt, user_id
 	from (select rownum r, board_num, board_title, board_date, board_cnt, user_id
-	from (select * from board order by board_num desc))
+			from (select * from board order by board_num desc))
 	where r between #{start} and #{end} 
 </select>
 
 <select id="cntlist" resultType="int">
 	select count(*) from board
 </select>
+ -->
+ <select id="boardlist" resultType="board" parameterType="paging">
+ 	select board_num, board_title, board_date, board_cnt, user_id
+ 	from (select rownum r, board_num, board_title, board_date, board_cnt, user_id
+ 			from (select *
+ 					from board
+ 					where 1=1 <include refid="searchif"></include>
+ 					order by board_num desc))
+ 	where r between #{start} and #{end}
+ </select>
+ <select id="cntlist" resultType="int" parameterType="paging">
+ 	select count(*)
+ 	from (select board_num from board
+ 			where 1=1 <include refid="searchif"></include>)
+ </select>
 
 <insert id="insertContent" parameterType="board">
 	insert into board(board_num, board_title, board_content, user_id)
@@ -39,6 +54,17 @@
 <delete id="boarddelete" parameterType="int">
 	delete from board where board_num = #{board_num}
 </delete>
+
+
+
+
+ 
+<sql id="searchif">
+	<if test="type=='board_title'">and board_title like '%'||#{word}||'%'</if>
+	<if test="type=='board_content'">and board_content like '%'||#{word}||'%'</if>
+	<if test="type=='user_id'">and user_id like '%'||#{word}||'%'</if>
+</sql>
+
 
 
 </mapper>
