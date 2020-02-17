@@ -2,6 +2,7 @@ package multi.semi.login;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,13 @@ public class LoginController {
 	LoginDAO dao;
 	
 //로그인폼
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String loginform(){
 		return "login/login";
 	}
 //로그인폼 입력 - db users 테이블 존재 - 세션 저장	
 	@RequestMapping("/loginresult")
-	public String loginprocess(HttpServletRequest request, String user_id, String user_pw){
+	public String loginprocess(HttpServletRequest request, HttpServletResponse response, String user_id, String user_pw){
 		LoginVO vo = dao.selectMember(user_id, user_pw);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", vo);
@@ -97,7 +98,7 @@ public class LoginController {
 //로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-
+		session.removeAttribute("member");
 		return "redirect:/";
 	}
 }
