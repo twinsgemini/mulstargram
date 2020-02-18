@@ -41,7 +41,7 @@ h3 {margin: 0;}
 </header>
 <c:forEach items="${list }" var="vo">
  <ul style="list-style-type: disc; font-size:5px;">
-<li><a href="http://localhost:8080/multistargram/boarddetail?board_num=${vo.board_num}">${vo.board_title}</a></li>
+<li><a href="/multistargram/boarddetail?board_num=${vo.board_num}">${vo.board_title}</a></li>
 </ul>
 </c:forEach>
 </div>

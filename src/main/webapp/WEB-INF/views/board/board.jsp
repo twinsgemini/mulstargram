@@ -56,7 +56,7 @@ function search(){
 <c:forEach items="${list }" var="vo">
 <tr>
 <td>${vo.board_num }</td>
-<td style="text-align:left;"><a href="http://localhost:8080/multistargram/boarddetail?board_num=${vo.board_num}">${vo.board_title}</a></td>
+<td style="text-align:left;"><a href="/multistargram/boarddetail?board_num=${vo.board_num}">${vo.board_title}</a></td>
 <td>${vo.user_id}</td>
 <td>${vo.board_date }</td>
 <td>${vo.board_cnt }</td>
@@ -67,7 +67,7 @@ function search(){
 </form>
 
 <div class="search_div">
-<form id="search_form" action="http://localhost:8080/multistargram/board" >
+<form id="search_form" action="/multistargram/board" >
 	<select name="type">
 		<option value="board_title">제목</option>
 		<option value="board_content">내용</option>
@@ -79,25 +79,25 @@ function search(){
 </div>
 
 <div class="btn_right mt15">
-	<button type="button" class="btn black mr5" onclick="location.href='http://localhost:8080/multistargram/boardwrite'">작성하기</button>
+	<button type="button" class="btn black mr5" onclick="location.href='/multistargram/boardwrite'">작성하기</button>
 </div>
 
 
 <!-- 페이징 처리 startpage ~ endpage -->
 <div class="pagination">
 <c:if test="${paging.prev}">
-   	<a href="http://localhost:8080/multistargram/board?page=${paging.startpage-1 }">이전</a>
+   	<a href="/multistargram/board?page=${paging.startpage-1 }">이전</a>
 </c:if> 
 <c:forEach begin="${paging.startpage}" end="${paging.endpage}" var="page">
 	<c:if test="${paging.page == page }">
-   <a style="background-color: black; color: white" href="http://localhost:8080/multistargram/board?page=${page }">${page}</a>
+   <a style="background-color: black; color: white" href="/multistargram/board?page=${page }">${page}</a>
 	</c:if>
 	<c:if test="${paging.page != page }">
-    <a href="http://localhost:8080/multistargram/board?page=${page }">${page}</a>
+    <a href="/multistargram/board?page=${page }">${page}</a>
 	</c:if>
 </c:forEach>
 <c:if test="${paging.next}">
-   	<a href="http://localhost:8080/multistargram/board?page=${paging.endpage+1 }">다음</a>
+   	<a href="/multistargram/board?page=${paging.endpage+1 }">다음</a>
 </c:if> 
 </div>
 

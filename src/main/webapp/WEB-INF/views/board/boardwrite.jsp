@@ -38,7 +38,7 @@
 			<div class="inner">
 				<h2>게시글 작성</h2>
 				<form id="boardForm" name="boardForm"
-					action="http://localhost:8080/multistargram/boardinsert"
+					action="/multistargram/boardinsert"
 					method="post">
 					<table width="100%" class="table02">
 						<caption>
@@ -71,7 +71,7 @@
 				</form>
 				<div class="btn_right mt15">
 					<button type="button" class="btn black mr5"
-						onclick="location.href='http://localhost:8080/multistargram/board'">목록으로</button>
+						onclick="location.href='/multistargram/board'">목록으로</button>
 					<button type="button" class="btn black" onclick="checkTitle();">등록하기</button>
 
 				</div>

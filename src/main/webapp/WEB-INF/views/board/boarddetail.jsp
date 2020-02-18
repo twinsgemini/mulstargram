@@ -22,7 +22,7 @@
 			<div class="inner">
 				<h2>게시글 상세</h2>
 				<form id="boardForm" name="boardForm"
-					action="http://localhost:8080/multistargram/boardmodify"
+					action="/multistargram/boardmodify"
 					method="get">
 					<table width="100%" class="table01">
 						<colegroup>
@@ -63,12 +63,12 @@
 				</form>
 				<div class="btn_right mt15">
 					<button type="button" class="btn black mr5"
-						onclick="location.href='http://localhost:8080/multistargram/board'">목록으로</button>
+						onclick="location.href='/multistargram/board'">목록으로</button>
 					<c:if test="${board.user_id==member.user_id}">
 						<button type="button" class="btn black mr5"
 							onclick="document.getElementById('boardForm').submit()">수정하기</button>
 						<button type="button" class="btn black"
-							onclick="location.href='http://localhost:8080/multistargram/boarddelete?board_num=${board.board_num}'">삭제하기</button>
+							onclick="location.href='/multistargram/boarddelete?board_num=${board.board_num}'">삭제하기</button>
 					</c:if>
 
 

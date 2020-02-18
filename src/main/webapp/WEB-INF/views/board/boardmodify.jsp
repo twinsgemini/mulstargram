@@ -25,7 +25,7 @@
 			<div class="inner">
 				<h2>게시글 수정</h2>
 				<form id="boardForm" name="boardForm"
-					action="http://localhost:8080/multistargram/boardmodify"
+					action="/multistargram/boardmodify"
 					method="post">
 					<table width="100%" class="table01">
 						<colegroup>
@@ -56,7 +56,7 @@
 					<button type="button" class="btn black mr5"
 						onclick="document.getElementById('boardForm').submit();">수정하기</button>
 					<button type="button" class="btn black"
-						onclick="location.href='http://localhost:8080/multistargram/boarddetail?board_num=${board.board_num}'">취소하기</button>
+						onclick="location.href='/multistargram/boarddetail?board_num=${board.board_num}'">취소하기</button>
 
 
 
